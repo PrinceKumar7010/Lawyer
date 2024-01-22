@@ -154,7 +154,7 @@ app.get("/main", (req, res) => {
 });
 
 // ROUTE 1 : LAWYER-LOGIN
-app.get("/main/lawyer_login", (req, res) => {
+app.get("/main/:name", (req, res) => {
   res.send("lawyer_login");
 });
 
@@ -192,6 +192,29 @@ app.get("/main/user_signup/home/exit", (req, res) => {
   res.send("EXIT PAGE");
 });
 
+// ROUTE 6: UPDATE LAWYER INFORMATION
+app.put("/main/lawyer/:id", (req, res) => {
+  const id = req.params.id;
+  res.send(`Updated lawyer information for id ${id}`);
+});
+
+// ROUTE 7: ADD NEW LAWYER
+app.post("/main/lawyer", (req, res) => {
+  const newLawyer = req.body;
+  res.send("Added new lawyer successfully");
+});
+
+// ROUTE 8: PARTIAL UPDATE OF LAWYER INFORMATION
+app.patch("/main/lawyer/:id", (req, res) => {
+  const id = req.params.id;
+  res.send(`Partially updated lawyer information for ${id}`);
+});
+
+// ROUTE 9: DELETE LAWYER
+app.delete("/main/lawyer/:id", (req, res) => {
+  const id = req.params.id;
+  res.send(`Deleted lawyer with id ${id}`);
+});
 app.get("/*", (req, res) => {
   res.send("NOT AVAILABLE VISIT OTHER ROUTES");
 });
